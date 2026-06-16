@@ -19,13 +19,9 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 .filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:0.75rem;align-items:center}
 .filter-label{font-size:11px;color:#718096}
 .chip{font-size:11px;padding:3px 10px;border-radius:20px;cursor:pointer;border:1px solid #DDD8D0;background:#fff;color:#718096}
-/* TMN = red/purple */
 .chip.on-tmn{background:#F2D0D8;color:#7B1535;border-color:#C0304F}
-/* HRDQ = blue */
 .chip.on-hrdq{background:#C8DFF7;color:#0C3A6B;border-color:#2A7DC4}
-/* Training Industry = green */
 .chip.on-ti{background:#C8EAD0;color:#1A5C2E;border-color:#2E8B4A}
-/* Show & Share = orange */
 .chip.on-ss{background:#FFE0C2;color:#7A3000;border-color:#E8600A}
 
 .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
@@ -39,11 +35,12 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 .cal-cell.other{background:#faf8f5;opacity:0.5}
 .cal-cell.today{border-color:#2A7DC4}
 .cal-cell.today .day-num{background:#2A7DC4;color:#fff;border-radius:50%}
+.cal-cell.has-ss{border-color:#E8600A;border-width:2px}
 .day-num{font-size:12px;font-weight:600;color:#718096;width:22px;height:22px;display:flex;align-items:center;justify-content:center;margin-bottom:2px}
 .pill{font-size:10px;padding:2px 4px;border-radius:4px;margin-bottom:2px;cursor:pointer;line-height:1.4;white-space:normal;word-break:break-word;display:block;width:100%;text-align:left;border:none}
 .pill:hover{opacity:0.75}
+.pill.ss-pill{font-weight:700}
 .more{font-size:10px;color:#718096;cursor:pointer;padding:1px 2px;background:none;border:none;display:block}
-/* pill colors */
 .s-tmn{background:#F2D0D8;color:#7B1535}
 .s-hrdq{background:#C8DFF7;color:#0C3A6B}
 .s-ti{background:#C8EAD0;color:#1A5C2E}
@@ -54,8 +51,10 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 .list-day-hdr{font-size:13px;font-weight:600;color:#4A5568;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #e8e4de}
 .list-ev{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:8px;border:1px solid #e8e4de;background:#fff;margin-bottom:6px;cursor:pointer}
 .list-ev:hover{background:#faf8f5}
+.list-ev.ss-ev{border-color:#E8600A;border-width:2px;background:#FFFAF6}
 .ev-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
 .ev-title{font-size:13px;font-weight:600;color:#1B2D4F;margin:0 0 2px}
+.ev-title.ss-title{color:#7A3000}
 .ev-meta{font-size:11px;color:#718096}
 .sbadge{display:inline-block;font-size:10px;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
 
@@ -74,18 +73,18 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 
 <div class="cal-wrap">
   <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:#E8600A"></div>Show &amp; Share (TW)</div>
     <div class="leg"><div class="leg-dot" style="background:#C0304F"></div>Training Mag Network</div>
     <div class="leg"><div class="leg-dot" style="background:#2A7DC4"></div>HRDQ</div>
     <div class="leg"><div class="leg-dot" style="background:#2E8B4A"></div>Training Industry</div>
-    <div class="leg"><div class="leg-dot" style="background:#E8600A"></div>Show &amp; Share</div>
   </div>
 
   <div class="filter-row">
     <span class="filter-label">Filter:</span>
+    <button class="chip on-ss" id="f-ss" onclick="toggleF('ss')">Show &amp; Share</button>
     <button class="chip on-tmn" id="f-tmn" onclick="toggleF('tmn')">Training Mag Network</button>
     <button class="chip on-hrdq" id="f-hrdq" onclick="toggleF('hrdq')">HRDQ</button>
     <button class="chip on-ti" id="f-ti" onclick="toggleF('ti')">Training Industry</button>
-    <button class="chip on-ss" id="f-ss" onclick="toggleF('ss')">Show &amp; Share</button>
   </div>
 
   <div class="controls">
@@ -136,11 +135,11 @@ const events=[
   {title:'What Video Learners Really Want: Key Findings on Video Effectiveness',date:'2026-06-18',time:'12:00 PM PT / 3:00 PM ET',source:'tmn',url:'https://www.trainingmagnetwork.com/calendar',desc:'Matt Pierce of TechSmith/Camtasia on what makes video learning effective.'},
   {title:'Dear AI: What Have You Done for Me Lately?',date:'2026-06-23',time:'9:00 AM PT / 12:00 PM ET',source:'tmn',url:'https://www.trainingmagnetwork.com/calendar',desc:'Rick Altman of BetterPresenting.com explores practical AI applications for trainers.'},
   {title:'The AI Implementation Guide for L&D: Book Release Celebration',date:'2026-06-24',time:'9:00 AM PT / 12:00 PM ET',source:'tmn',url:'https://www.trainingmagnetwork.com/calendar',desc:'Book release celebration for the AI Implementation Guide for L&D.'},
-  // HRDQ - June
+  // HRDQ
   {title:'10 Communications Mistakes Leaders Unknowingly Make',date:'2026-06-24',time:'2:00 PM ET',source:'hrdq',url:'https://hrdqu.com/events-all-topics/',desc:'Uncover the 10 communications mistakes leaders unknowingly make and how to fix them.'},
-  // Training Industry - June
+  // Training Industry
   {title:'Training Industry Webinar',date:'2026-06-05',time:'1:00 PM ET',source:'ti',url:'https://trainingindustry.com/webinar/',desc:'Visit trainingindustry.com/webinar to see the current topic and register.'},
-  // Show & Share
+  // Show & Share — always sorted first
   {title:'Gameshow Pro Introduces New Features Demo',date:'2026-06-18',time:'12:00 PM ET',source:'ss',url:'https://us06web.zoom.us/meeting/register/tZcuc--gqzooGtYEL0h1EdbtQb-LoUulvfjq',desc:'Dan Yaman shares new Me First Integration tips and other facilitation tips.'},
   {title:'Instructional Origami with Katrina Kennedy',date:'2026-06-25',time:'12:00 PM ET',source:'ss',url:'https://us06web.zoom.us/meeting/register/tZcuc--gqzooGtYEL0h1EdbtQb-LoUulvfjq',desc:'See how a few paper folds can yield incredible learning and retention.'},
   {title:'Facilitate an Online Listening Activity with Kassy LaBorie',date:'2026-07-09',time:'12:00 PM ET',source:'ss',url:'https://us06web.zoom.us/meeting/register/tZcuc--gqzooGtYEL0h1EdbtQb-LoUulvfjq',desc:'Kassy LaBorie shares a fantastic listening exercise perfect for online events.'},
@@ -169,7 +168,16 @@ function setView(v){
   render();
 }
 function changeM(d){curMonth.setMonth(curMonth.getMonth()+d);renderCal();}
-function filtered(){return events.filter(e=>filters[e.source]);}
+function filtered(){
+  // Always sort S&S first, then others
+  return events
+    .filter(e=>filters[e.source])
+    .sort((a,b)=>{
+      if(a.source==='ss'&&b.source!=='ss') return -1;
+      if(b.source==='ss'&&a.source!=='ss') return 1;
+      return 0;
+    });
+}
 function render(){view==='cal'?renderCal():renderList();}
 
 function renderCal(){
@@ -195,27 +203,52 @@ function renderCal(){
   const rem=42-(firstDay+dim);
   for(let d=1;d<=rem;d++) grid.appendChild(mkCell(d,true,false,[]));
 }
+
 function mkCell(day,other,isT,evs){
   const c=document.createElement('div');
-  c.className='cal-cell'+(other?' other':'')+(isT?' today':'');
+  const hasSS=evs.some(e=>e.source==='ss');
+  c.className='cal-cell'+(other?' other':'')+(isT?' today':'')+(hasSS?' has-ss':'');
   const n=document.createElement('div');n.className='day-num';n.textContent=day;c.appendChild(n);
-  evs.slice(0,2).forEach(e=>{
+
+  // S&S events always shown first and never hidden
+  const ssEvs=evs.filter(e=>e.source==='ss');
+  const otherEvs=evs.filter(e=>e.source!=='ss');
+
+  // Show all S&S events
+  ssEvs.forEach(e=>{
+    const p=document.createElement('button');
+    p.className='pill s-ss ss-pill';
+    p.textContent=e.title;p.title=e.title;
+    p.onclick=()=>openMod(e);c.appendChild(p);
+  });
+
+  // Show up to (2 - ssEvs.length) other events, rest go to +more
+  const otherSlots=Math.max(0, 2-ssEvs.length);
+  otherEvs.slice(0,otherSlots).forEach(e=>{
     const p=document.createElement('button');
     p.className='pill '+SRC[e.source].cls;
     p.textContent=e.title;p.title=e.title;
     p.onclick=()=>openMod(e);c.appendChild(p);
   });
-  if(evs.length>2){
+  const hiddenCount=otherEvs.length-otherSlots;
+  if(hiddenCount>0){
     const more=document.createElement('button');more.className='more';
-    more.textContent='+'+(evs.length-2)+' more';
-    more.onclick=()=>openMod(evs[2]);
+    more.textContent='+'+hiddenCount+' more';
+    more.onclick=()=>openMod(otherEvs[otherSlots]);
     c.appendChild(more);
   }
   return c;
 }
+
 function renderList(){
   const lv=document.getElementById('listView');lv.innerHTML='';
-  const evs=filtered().sort((a,b)=>new Date(a.date)-new Date(b.date));
+  const evs=filtered().sort((a,b)=>{
+    const dateDiff=new Date(a.date)-new Date(b.date);
+    if(dateDiff!==0) return dateDiff;
+    if(a.source==='ss'&&b.source!=='ss') return -1;
+    if(b.source==='ss'&&a.source!=='ss') return 1;
+    return 0;
+  });
   if(!evs.length){lv.innerHTML='<div style="padding:2rem;text-align:center;color:#718096;font-size:14px">No events match the current filters.</div>';return;}
   const byDay={};
   evs.forEach(e=>{
@@ -226,10 +259,13 @@ function renderList(){
     const sec=document.createElement('div');sec.className='list-day';
     sec.innerHTML='<div class="list-day-hdr">'+day+'</div>';
     es.forEach(e=>{
-      const row=document.createElement('div');row.className='list-ev';row.onclick=()=>openMod(e);
+      const isSS=e.source==='ss';
+      const row=document.createElement('div');
+      row.className='list-ev'+(isSS?' ss-ev':'');
+      row.onclick=()=>openMod(e);
       row.innerHTML=`<div class="ev-dot" style="background:${SRC[e.source].dot}"></div>
         <div style="flex:1;min-width:0">
-          <div class="ev-title">${esc(e.title)}<span class="sbadge ${SRC[e.source].cls}">${SRC[e.source].name}</span></div>
+          <div class="ev-title${isSS?' ss-title':''}">${esc(e.title)}<span class="sbadge ${SRC[e.source].cls}">${SRC[e.source].name}</span></div>
           <div class="ev-meta">${e.time||''}</div>
         </div>`;
       sec.appendChild(row);
@@ -237,6 +273,7 @@ function renderList(){
     lv.appendChild(sec);
   });
 }
+
 function openMod(e){
   document.getElementById('mBadge').textContent=SRC[e.source].name;
   document.getElementById('mBadge').className='modal-source-badge '+SRC[e.source].cls;
