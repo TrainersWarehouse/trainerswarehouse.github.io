@@ -175,7 +175,7 @@ const events=[
 ];
 
 let view='cal';
-let curMonth=new Date(2026,5,1);
+let curMonth=new Date();curMonth.setDate(1);
 let filters={tmn:true,hrdq:true,ti:true,ss:true};
 
 function toggleF(s){
