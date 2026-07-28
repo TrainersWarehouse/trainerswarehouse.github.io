@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATD Chapter Events Calendar | Trainers Warehouse</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F;line-height:1.5}
+.wrap{max-width:960px;margin:0 auto;padding:20px 16px 40px}
+
+.sec-label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#718096;font-weight:600;margin-bottom:10px}
+
+.conf{background:#FFF4EA;border:1px solid #E8600A;border-radius:12px;padding:14px 18px;margin-bottom:10px;display:block;text-decoration:none;color:inherit}
+.conf:hover{background:#FFEBD9}
+.conf-t{font-size:15px;font-weight:700;color:#7A3000;margin-bottom:4px}
+.conf-m{font-size:12.5px;color:#4A5568;margin-bottom:4px}
+.conf-p{font-size:12.5px;color:#718096}
+
+.filters{display:flex;flex-wrap:wrap;gap:20px;margin:1.75rem 0 1rem;padding-bottom:1rem;border-bottom:1px solid #e8e4de}
+.fl{font-size:11px;color:#718096;margin-bottom:6px;display:block}
+.frow{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:12px;padding:4px 12px;border-radius:20px;cursor:pointer;border:1px solid #DDD8D0;background:#fff;color:#718096;font-family:inherit}
+.chip.on{background:#1B2D4F;color:#fff;border-color:#1B2D4F;font-weight:600}
+.chip:hover{border-color:#1B2D4F}
+
+.count{font-size:13px;color:#4A5568;margin-bottom:12px}
+.count span{color:#718096}
+
+.ev{background:#fff;border:1px solid #e8e4de;border-radius:12px;padding:12px 16px;display:flex;gap:14px;align-items:flex-start;margin-bottom:8px;text-decoration:none;color:inherit}
+.ev:hover{background:#faf8f5;border-color:#DDD8D0}
+.ev.tw{border-color:#E8600A;border-width:2px;background:#FFFBF7}
+.dt{text-align:center;min-width:44px;flex-shrink:0}
+.dt-m{font-size:11px;color:#718096;text-transform:uppercase;font-weight:600}
+.dt-d{font-size:21px;font-weight:700;line-height:1.1}
+.ev-b{flex:1;min-width:0}
+.ev-t{font-size:14px;font-weight:600;margin-bottom:4px;line-height:1.4}
+.ev.tw .ev-t{color:#7A3000}
+.rep{font-size:11px;font-weight:400;color:#9aa0a6;margin-left:8px}
+.ev-m{font-size:12px;color:#4A5568;margin-bottom:8px}
+.org{font-weight:600}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;padding:2px 9px;border-radius:20px}
+.t-free{background:#EAF3DE;color:#27500A}
+.t-mem{background:#E6F1FB;color:#0C447C}
+.t-paid{background:#FAEEDA;color:#633806}
+.t-unk{background:#F1EFE8;color:#444441}
+.t-fmt{background:#f4f2ee;color:#5F5E5A}
+.empty{padding:2.5rem;text-align:center;color:#718096;font-size:14px}
+.foot{margin-top:2rem;padding-top:1rem;border-top:1px solid #e8e4de;font-size:11.5px;color:#9aa0a6;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="sec-label">Regional conferences</div>
+<div id="conf"></div>
+
+<div class="filters">
+  <div><span class="fl">Cost</span><div class="frow" id="fFee"></div></div>
+  <div><span class="fl">Format</span><div class="frow" id="fFmt"></div></div>
+  <div id="regWrap" style="display:none"><span class="fl">Region</span><div class="frow" id="fReg"></div></div>
+</div>
+
+<div class="count" id="count"></div>
+<div id="list"></div>
+
+<div class="foot">
+  Curated by Trainers Warehouse from published ATD chapter calendars. Board meetings, committee meetings, and new-member orientations are excluded; recurring series show their next occurrence. Cost reflects what each chapter publishes &mdash; check the event page to confirm.
+</div>
+
+</div>
+
+<script>
+var TODAY=new Date();TODAY.setHours(0,0,0,0);
+
+var CONF=[
+{d:'2026-10-08',dn:'October 8&ndash;9, 2026',t:'ATD New England Area Conference',o:'ATD New England &mdash; a partnership of New England chapters',loc:'The Event Center, Nashua, NH',p:'Early bird: member $235 &middot; non-member $310 &middot; group of 3+ $210',u:'https://atdnewengland.com/event-6603363'},
+{d:'2026-10-15',dn:'October 15&ndash;16, 2026',t:'ACE 2026: Atlanta Conference &amp; Exposition',o:'ATD Greater Atlanta',loc:'AmericasMart, 240 Peachtree St NW, Atlanta, GA',p:'Registration open &mdash; pricing on event page',u:'https://www.atdatlanta.org/events/ace-atlanta-conference-exposition'}
+];
+
+var EV=[
+{d:'2026-07-29',t:"Let's lunch in Natick",o:'ATD Greater Boston',r:'Northeast',loc:'Panera, Natick, MA',f:'inperson',fee:'members',tm:'12:30 PM ET',u:'https://www.tdboston.org/event-6748875'},
+{d:'2026-07-29',t:'Mid-Atlantic series: the conversation clinic',o:'ATD Buffalo Niagara',r:'Northeast',loc:'Virtual',f:'virtual',fee:'unknown',tm:'6:00 PM ET',u:'https://atdbuffalo.wildapricot.org/event-6770377'},
+{d:'2026-07-30',t:'Show &amp; Share: Building resilience and grit, with Patrick Nugent',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1},
+{d:'2026-08-04',t:'The High Noon Exchange &mdash; L&amp;D community of practice',o:'ATD Greater Atlanta',r:'South',loc:'Virtual',f:'virtual',fee:'unknown',tm:'12:00 PM ET',rep:'Monthly',u:'https://member.atdatlanta.org/event-6543762'},
+{d:'2026-08-06',t:'Seattle networking interest group',o:'ATD Puget Sound',r:'West',loc:'Virtual &mdash; Zoom',f:'virtual',fee:'unknown',tm:'5:00 PM PT',rep:'Monthly',u:'https://www.atdpugetsound.org/event-6619199'},
+{d:'2026-08-07',t:'Coffee &amp; conversation',o:'ATD Florida Suncoast',r:'South',loc:'Craft Kafe, St. Petersburg, FL',f:'inperson',fee:'members',tm:'7:30 AM ET',rep:'Recurring',u:'https://atdsuncoast.org/event-6614845'},
+{d:'2026-08-11',t:'Narrative intelligence: using story to build trust, with Henry Wong',o:'ATD St. Louis',r:'Midwest',loc:'Zoom',f:'virtual',fee:'unknown',tm:'11:30 AM CT',u:'https://atdstl.org/events'},
+{d:'2026-08-11',t:'Technology SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'12:00 PM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487276'},
+{d:'2026-08-12',t:'Networking@Noon',o:'ATD Greater Boston',r:'Northeast',loc:'Virtual',f:'virtual',fee:'unknown',tm:'12:00 PM ET',rep:'Monthly',u:'https://www.tdboston.org/event-6710818'},
+{d:'2026-08-12',t:'Individual development plan workshop',o:'ATD Puget Sound',r:'West',loc:'Zoom',f:'virtual',fee:'unknown',tm:'5:00 PM PT',rep:'2 sessions',u:'https://www.atdpugetsound.org/event-6763678'},
+{d:'2026-08-13',t:'Show &amp; Share: Tarot for training, with Tina Robinson',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1},
+{d:'2026-08-14',t:'Gathering insights: training evaluation with focus groups, with Sheila B. Robinson',o:'ATD Greater Boston',r:'Northeast',loc:'Virtual',f:'virtual',fee:'paid',tm:'2:30 PM ET',u:'https://www.tdboston.org/event-6742629'},
+{d:'2026-08-18',t:'Independent consultant SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'12:00 PM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487308'},
+{d:'2026-08-18',t:'Finding your true north: leading from values, with Keith Lewis',o:'ATD Puget Sound',r:'West',loc:'Virtual',f:'virtual',fee:'unknown',tm:'12:00 PM PT',u:'https://www.atdpugetsound.org/event-6719499'},
+{d:'2026-08-19',t:'Leadership development SIG: from expert to leader',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'12:00 PM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487292'},
+{d:'2026-08-20',t:'TechComm SIG mini-presentations',o:'ATD Florida Suncoast',r:'South',loc:'Zoom',f:'virtual',fee:'unknown',tm:'6:30 PM ET',u:'https://atdsuncoast.org/event-6769723'},
+{d:'2026-08-22',t:'Community event at St. Louis Wine Garden',o:'ATD St. Louis',r:'Midwest',loc:'St. Charles Wine Garden, MO',f:'inperson',fee:'free',tm:'4:00 PM CT',u:'https://atdstl.org/events'},
+{d:'2026-08-27',t:'Beyond managers training: closing the leadership gap, with Hana Zacay',o:'ATD St. Louis',r:'Midwest',loc:'Zoom',f:'virtual',fee:'unknown',tm:'11:30 AM CT',u:'https://atdstl.org/events'},
+{d:'2026-08-27',t:'Show &amp; Share: Peer review your training, with Jazmin Webster',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1},
+{d:'2026-09-01',t:'Instructional design SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'12:00 PM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6714903'},
+{d:'2026-09-03',t:'Happy hour',o:'ATD Florida Suncoast',r:'South',loc:'Florida Avenue Brewing, Wesley Chapel, FL',f:'inperson',fee:'members',tm:'6:00 PM ET',rep:'Recurring',u:'https://atdsuncoast.org/event-6614851'},
+{d:'2026-09-08',t:'Connect: Talent &amp; Learning Summit &mdash; keynote Kassy LaBorie',o:'Central Ohio ATD',r:'Midwest',loc:'Quest Conference Center, Westerville, OH',f:'inperson',fee:'paid',tm:'8:00 AM ET',u:'https://centralohioatd.org/event-6669242'},
+{d:'2026-09-10',t:'Show &amp; Share: The RELATE framework for choosing workshop activities, with Sheila B. Robinson',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1},
+{d:'2026-09-17',t:'Annual Learn Conference: celebrating 80 years',o:'ATD St. Louis',r:'Midwest',loc:'Kirkwood, St. Louis, MO',f:'inperson',fee:'paid',tm:'8:00 AM CT',u:'https://atdstl.org/events'},
+{d:'2026-09-17',t:'Diversity, equity &amp; inclusion SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'12:00 PM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487255'},
+{d:'2026-09-18',t:'Organizational development SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'7:30 AM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487266'},
+{d:'2026-09-24',t:'Show &amp; Share: We! Connect future-focused deck, with Chad Littlefield',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1}
+];
+
+var FEE={free:['Free to all','t-free'],members:['Free for members','t-mem'],paid:['Paid','t-paid'],unknown:['Check event page','t-unk']};
+var REGC={'Northeast':'#3C3489','Midwest':'#085041','South':'#712B13','West':'#993556'};
+var fee='all',fmt='all',reg='all';
+
+function up(list){return list.filter(function(e){return new Date(e.d+'T12:00:00')>=TODAY;});}
+
+function mkChip(label,val,cur,fn){
+  var b=document.createElement('button');
+  b.className='chip'+(val===cur?' on':'');
+  b.innerHTML=label;b.onclick=fn;return b;
+}
+
+function renderConf(){
+  var c=document.getElementById('conf');c.innerHTML='';
+  var list=up(CONF);
+  if(!list.length){c.innerHTML='<div class="empty">No conferences currently scheduled.</div>';return;}
+  list.forEach(function(e){
+    var a=document.createElement('a');
+    a.className='conf';a.href=e.u;a.target='_blank';a.rel='noopener noreferrer';
+    a.innerHTML='<div class="conf-t">'+e.t+'</div><div class="conf-m">'+e.dn+' &middot; '+e.o+' &middot; '+e.loc+'</div><div class="conf-p">'+e.p+'</div>';
+    c.appendChild(a);
+  });
+}
+
+function render(){
+  var f=document.getElementById('fFee');f.innerHTML='';
+  [['All','all'],['Free to all','free'],['Free for members','members'],['Paid','paid'],['Unknown','unknown']].forEach(function(x){
+    f.appendChild(mkChip(x[0],x[1],fee,function(){fee=x[1];render();}));});
+
+  var m=document.getElementById('fFmt');m.innerHTML='';
+  [['All','all'],['Virtual','virtual'],['In person','inperson']].forEach(function(x){
+    m.appendChild(mkChip(x[0],x[1],fmt,function(){fmt=x[1];if(x[1]!=='inperson')reg='all';render();}));});
+
+  document.getElementById('regWrap').style.display=(fmt==='inperson')?'':'none';
+  if(fmt==='inperson'){
+    var g=document.getElementById('fReg');g.innerHTML='';
+    [['All','all'],['Northeast','Northeast'],['Midwest','Midwest'],['South','South'],['West','West']].forEach(function(x){
+      g.appendChild(mkChip(x[0],x[1],reg,function(){reg=x[1];render();}));});
+  }
+
+  var out=up(EV).filter(function(e){
+    return (fee==='all'||e.fee===fee)&&(fmt==='all'||e.f===fmt)&&(reg==='all'||e.r===reg);
+  }).sort(function(a,b){return new Date(a.d)-new Date(b.d);});
+
+  document.getElementById('count').innerHTML=out.length+(out.length===1?' session':' sessions')+' <span>&middot; across 8 chapters</span>';
+
+  var L=document.getElementById('list');L.innerHTML='';
+  if(!out.length){L.innerHTML='<div class="empty">No sessions match those filters.</div>';return;}
+  out.forEach(function(e){
+    var dt=new Date(e.d+'T12:00:00');
+    var a=document.createElement('a');
+    a.className='ev'+(e.tw?' tw':'');
+    a.href=e.u;a.target='_blank';a.rel='noopener noreferrer';
+    a.innerHTML='<div class="dt"><div class="dt-m">'+dt.toLocaleDateString('en-US',{month:'short'})+'</div><div class="dt-d">'+dt.getDate()+'</div></div>'+
+      '<div class="ev-b"><div class="ev-t">'+e.t+(e.rep?'<span class="rep">'+e.rep+'</span>':'')+'</div>'+
+      '<div class="ev-m"><span class="org" style="color:'+(e.tw?'#E8600A':REGC[e.r])+'">'+e.o+'</span> &middot; '+e.tm+' &middot; '+e.loc+'</div>'+
+      '<div class="tags"><span class="tag '+FEE[e.fee][1]+'">'+FEE[e.fee][0]+'</span>'+
+      '<span class="tag t-fmt">'+(e.f==='virtual'?'Virtual':'In person')+'</span></div></div>';
+    L.appendChild(a);
+  });
+}
+
+renderConf();render();
+</script>
+</body>
+</html>
