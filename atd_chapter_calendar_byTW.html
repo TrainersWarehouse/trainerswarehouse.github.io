@@ -76,7 +76,11 @@ var TODAY=new Date();TODAY.setHours(0,0,0,0);
 
 var CONF=[
 {d:'2026-10-08',dn:'October 8&ndash;9, 2026',t:'ATD New England Area Conference',o:'ATD New England &mdash; a partnership of New England chapters',loc:'The Event Center, Nashua, NH',p:'Early bird: member $235 &middot; non-member $310 &middot; group of 3+ $210',u:'https://atdnewengland.com/event-6603363'},
-{d:'2026-10-15',dn:'October 15&ndash;16, 2026',t:'ACE 2026: Atlanta Conference &amp; Exposition',o:'ATD Greater Atlanta',loc:'AmericasMart, 240 Peachtree St NW, Atlanta, GA',p:'Registration open &mdash; pricing on event page',u:'https://www.atdatlanta.org/events/ace-atlanta-conference-exposition'}
+{d:'2026-10-08',dn:'October 8, 2026',t:'Clarity in the Clouds &mdash; ATD RMC Statewide Conference',o:'ATD Rocky Mountain Chapter',loc:'University of Denver, Joy Burns Center, Denver, CO',p:'Member $240 &middot; general admission $345 &middot; student $115',u:'https://atdrmc.org/event-6671112'},
+{d:'2026-10-12',dn:'October 12, 2026',t:'MIATD26 &mdash; Michigan ATD Regional Conference',o:'Hosted by Ann Arbor ATD &amp; ATD Detroit, with West Michigan ATD',loc:'Washtenaw Community College, Ann Arbor, MI',p:'MI ATD members $150 advance (through Aug 16) &middot; $185 regular &middot; non-member $225 &middot; student $100',u:'https://a2atd.org/event-6646301'},
+{d:'2026-10-15',dn:'October 15&ndash;16, 2026',t:'ACE 2026: Atlanta Conference &amp; Exposition',o:'ATD Greater Atlanta',loc:'AmericasMart, 240 Peachtree St NW, Atlanta, GA',p:'Registration open &mdash; pricing on event page',u:'https://www.atdatlanta.org/events/ace-atlanta-conference-exposition'},
+{d:'2026-09-29',dn:'September 29 &ndash; October 1, 2026',t:'ATD Core4 Conference &mdash; Indianapolis',o:'ATD National',loc:'Indianapolis, IN',p:'Three days across instructional design, delivery, evaluating impact, and emerging trends',u:'https://core4.td.org/register/'},
+{d:'2026-12-01',dn:'December 1&ndash;3, 2026',t:'ATD Core4 Virtual',o:'ATD National',loc:'Online &mdash; attend from anywhere',p:'The Core4 program delivered online for teams and remote learners',u:'https://core4.td.org/schedule-virtual/'}
 ];
 
 var EV=[
@@ -106,7 +110,19 @@ var EV=[
 {d:'2026-09-17',t:'Annual Learn Conference: celebrating 80 years',o:'ATD St. Louis',r:'Midwest',loc:'Kirkwood, St. Louis, MO',f:'inperson',fee:'paid',tm:'8:00 AM CT',u:'https://atdstl.org/events'},
 {d:'2026-09-17',t:'Diversity, equity &amp; inclusion SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'12:00 PM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487255'},
 {d:'2026-09-18',t:'Organizational development SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'7:30 AM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487266'},
-{d:'2026-09-24',t:'Show &amp; Share: We! Connect future-focused deck, with Chad Littlefield',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1}
+{d:'2026-09-24',t:'Show &amp; Share: We! Connect future-focused deck, with Chad Littlefield',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1},
+{d:'2026-08-06',t:'Mastermind for Independent Consultants',o:'ATD Central Mass',r:'Northeast',loc:'Virtual',f:'virtual',fee:'members',tm:'7:00 PM ET',rep:'Monthly',u:'https://tdcentralmass.org/event-6752113'},
+{d:'2026-08-07',t:'Friday Morning Central Mash: networking, fun &amp; learning',o:'ATD Central Mass',r:'Northeast',loc:'Zoom',f:'virtual',fee:'unknown',tm:'8:00 AM ET',rep:'Recurring',u:'https://tdcentralmass.org/event-6781343'},
+{d:'2026-08-12',t:'What is AI literacy? How HR and L&amp;D can enable AI productivity and safety',o:'ATD Nebraska',r:'Midwest',loc:'Zoom',f:'virtual',fee:'unknown',tm:'12:00 PM CT',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-08-15',t:'Our findings are delicious: dipping into data',o:'ATD Central Mass',r:'Northeast',loc:'Workers Credit Union, Littleton, MA',f:'inperson',fee:'unknown',tm:'1:30 PM ET',u:'https://tdcentralmass.org/event-6780549'},
+{d:'2026-08-20',t:'Virtual coffee chat',o:'ATD Nebraska',r:'Midwest',loc:'Zoom',f:'virtual',fee:'unknown',tm:'9:00 AM CT',rep:'Monthly',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-08-26',t:"Learning Leaders Forum: rebuilding a franchise training program",o:'ATD Nebraska',r:'Midwest',loc:"Scooter's Coffee, Omaha, NE (hybrid)",f:'inperson',fee:'unknown',tm:'8:30 AM CT',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-08-27',t:'AI hands-on learning lab: Mighty Plugin for Articulate Rise',o:'ATD Central Mass',r:'Northeast',loc:'Zoom',f:'virtual',fee:'unknown',tm:'7:00 PM ET',u:'https://tdcentralmass.org/event-6781311'},
+{d:'2026-09-18',t:"Trainer's Institute Base Camp: design thinking",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-09-18',t:'Deliver and track learning experiences, no LMS required',o:'ATD Nebraska with ATD Las Vegas',r:'Midwest',loc:'Virtual &mdash; register via ATD Las Vegas',f:'virtual',fee:'unknown',tm:'9:00 AM CT',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-10-02',t:"Trainer's Institute Anchor: learning technologies",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-10-16',t:"Trainer's Institute Scale: facilitation, with Theresa Hummel-Krallinger",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-10-27',t:"Trainer's Institute Summit: evaluating impact",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'}
 ];
 
 var FEE={free:['Free to all','t-free'],members:['Free for members','t-mem'],paid:['Paid','t-paid'],unknown:['Check event page','t-unk']};
@@ -153,7 +169,7 @@ function render(){
     return (fee==='all'||e.fee===fee)&&(fmt==='all'||e.f===fmt)&&(reg==='all'||e.r===reg);
   }).sort(function(a,b){return new Date(a.d)-new Date(b.d);});
 
-  document.getElementById('count').innerHTML=out.length+(out.length===1?' session':' sessions')+' <span>&middot; across 8 chapters</span>';
+  document.getElementById('count').innerHTML=out.length+(out.length===1?' session':' sessions')+' <span>&middot; across 11 chapters</span>';
 
   var L=document.getElementById('list');L.innerHTML='';
   if(!out.length){L.innerHTML='<div class="empty">No sessions match those filters.</div>';return;}
