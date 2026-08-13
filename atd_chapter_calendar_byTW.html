@@ -30,6 +30,7 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 .ev{background:#fff;border:1px solid #e8e4de;border-radius:12px;padding:12px 16px;display:flex;gap:14px;align-items:flex-start;margin-bottom:8px;text-decoration:none;color:inherit}
 .ev:hover{background:#faf8f5;border-color:#DDD8D0}
 .ev.tw{border-color:#E8600A;border-width:2px;background:#FFFBF7}
+.ev.isconf{border-left:4px solid #1B2D4F}
 .dt{text-align:center;min-width:44px;flex-shrink:0}
 .dt-m{font-size:11px;color:#718096;text-transform:uppercase;font-weight:600}
 .dt-d{font-size:21px;font-weight:700;line-height:1.1}
@@ -75,12 +76,14 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 var TODAY=new Date();TODAY.setHours(0,0,0,0);
 
 var CONF=[
-{d:'2026-10-08',dn:'October 8&ndash;9, 2026',t:'ATD New England Area Conference',o:'ATD New England &mdash; a partnership of New England chapters',loc:'The Event Center, Nashua, NH',p:'Early bird: member $235 &middot; non-member $310 &middot; group of 3+ $210',u:'https://atdnewengland.com/event-6603363'},
-{d:'2026-10-08',dn:'October 8, 2026',t:'Clarity in the Clouds &mdash; ATD RMC Statewide Conference',o:'ATD Rocky Mountain Chapter',loc:'University of Denver, Joy Burns Center, Denver, CO',p:'Member $240 &middot; general admission $345 &middot; student $115',u:'https://atdrmc.org/event-6671112'},
-{d:'2026-10-12',dn:'October 12, 2026',t:'MIATD26 &mdash; Michigan ATD Regional Conference',o:'Hosted by Ann Arbor ATD &amp; ATD Detroit, with West Michigan ATD',loc:'Washtenaw Community College, Ann Arbor, MI',p:'MI ATD members $150 advance (through Aug 16) &middot; $185 regular &middot; non-member $225 &middot; student $100',u:'https://a2atd.org/event-6646301'},
-{d:'2026-10-15',dn:'October 15&ndash;16, 2026',t:'ACE 2026: Atlanta Conference &amp; Exposition',o:'ATD Greater Atlanta',loc:'AmericasMart, 240 Peachtree St NW, Atlanta, GA',p:'Registration open &mdash; pricing on event page',u:'https://www.atdatlanta.org/events/ace-atlanta-conference-exposition'},
-{d:'2026-09-29',dn:'September 29 &ndash; October 1, 2026',t:'ATD Core4 Conference &mdash; Indianapolis',o:'ATD National',loc:'Indianapolis, IN',p:'Three days across instructional design, delivery, evaluating impact, and emerging trends',u:'https://core4.td.org/register/'},
-{d:'2026-12-01',dn:'December 1&ndash;3, 2026',t:'ATD Core4 Virtual',o:'ATD National',loc:'Online &mdash; attend from anywhere',p:'The Core4 program delivered online for teams and remote learners',u:'https://core4.td.org/schedule-virtual/'}
+{d:'2026-09-17',dn:'September 17, 2026',t:'Learn Conference &mdash; Celebrating 80 Years',o:'ATD St. Louis',r:'Midwest',loc:'Sunset Events Kirkwood, St. Louis, MO &mdash; in person or live stream',f:'inperson',fee:'paid',tm:'8:00 AM CT',p:'In person: member $275 &middot; non-member $349 &middot; student $99. Live stream: member $149 &middot; non-member $175 &middot; student $50. Early-bird rates end July 31.',u:'https://atdstl.org/event-6376324'},
+{d:'2026-09-29',dn:'September 29 &ndash; October 1, 2026',t:'ATD Core4 Conference &mdash; Indianapolis',o:'ATD National',r:'Midwest',loc:'Indianapolis, IN',f:'inperson',fee:'paid',tm:'3 days',p:'Three days across instructional design, delivery, evaluating impact, and emerging trends',u:'https://core4.td.org/register/'},
+{d:'2026-10-07',dn:'October 7, 2026',t:'Gather. Connect. Grow. &mdash; ATD Greater Twin Cities Conference',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Brookview Golf Course, Golden Valley, MN',f:'inperson',fee:'paid',tm:'9:00 AM CT',p:'Early bird through Aug 15: member $99 &middot; non-member $149. After: $149 / $225. Limited to 100 seats.',u:'https://atd-gtc.wildapricot.org/event-6752842'},
+{d:'2026-10-08',dn:'October 8&ndash;9, 2026',t:'ATD New England Area Conference',o:'ATD New England &mdash; a partnership of New England chapters',r:'Northeast',loc:'The Event Center, Nashua, NH',f:'inperson',fee:'paid',tm:'2 days',p:'Early bird: member $235 &middot; non-member $310 &middot; group of 3+ $210',u:'https://atdnewengland.com/event-6603363'},
+{d:'2026-10-08',dn:'October 8, 2026',t:'Clarity in the Clouds &mdash; ATD RMC Statewide Conference',o:'ATD Rocky Mountain Chapter',r:'West',loc:'University of Denver, Joy Burns Center, Denver, CO',f:'inperson',fee:'paid',tm:'8:30 AM MT',p:'Member $240 &middot; general admission $345 &middot; student $115',u:'https://atdrmc.org/event-6671112'},
+{d:'2026-10-12',dn:'October 12, 2026',t:'MIATD26 &mdash; Michigan ATD Regional Conference',o:'Hosted by Ann Arbor ATD &amp; ATD Detroit, with West Michigan ATD',r:'Midwest',loc:'Washtenaw Community College, Ann Arbor, MI',f:'inperson',fee:'paid',tm:'8:00 AM ET',p:'MI ATD members $150 advance (through Aug 16) &middot; $185 regular &middot; non-member $225 &middot; student $100',u:'https://a2atd.org/event-6646301'},
+{d:'2026-10-15',dn:'October 15&ndash;16, 2026',t:'ACE 2026: Atlanta Conference &amp; Exposition',o:'ATD Greater Atlanta',r:'South',loc:'AmericasMart, 240 Peachtree St NW, Atlanta, GA',f:'inperson',fee:'paid',tm:'2 days',p:'Registration open &mdash; pricing on event page',u:'https://www.atdatlanta.org/events/ace-atlanta-conference-exposition'},
+{d:'2026-12-01',dn:'December 1&ndash;3, 2026',t:'ATD Core4 Virtual',o:'ATD National',r:'Midwest',loc:'Online &mdash; attend from anywhere',f:'virtual',fee:'paid',tm:'3 days',p:'The Core4 program delivered online for teams and remote learners',u:'https://core4.td.org/schedule-virtual/'}
 ];
 
 var EV=[
@@ -107,7 +110,6 @@ var EV=[
 {d:'2026-09-03',t:'Happy hour',o:'ATD Florida Suncoast',r:'South',loc:'Florida Avenue Brewing, Wesley Chapel, FL',f:'inperson',fee:'members',tm:'6:00 PM ET',rep:'Recurring',u:'https://atdsuncoast.org/event-6614851'},
 {d:'2026-09-08',t:'Connect: Talent &amp; Learning Summit &mdash; keynote Kassy LaBorie',o:'Central Ohio ATD',r:'Midwest',loc:'Quest Conference Center, Westerville, OH',f:'inperson',fee:'paid',tm:'8:00 AM ET',u:'https://centralohioatd.org/event-6669242'},
 {d:'2026-09-10',t:'Show &amp; Share: The RELATE framework for choosing workshop activities, with Sheila B. Robinson',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1},
-{d:'2026-09-17',t:'Annual Learn Conference: celebrating 80 years',o:'ATD St. Louis',r:'Midwest',loc:'Kirkwood, St. Louis, MO',f:'inperson',fee:'paid',tm:'8:00 AM CT',u:'https://atdstl.org/events'},
 {d:'2026-09-17',t:'Diversity, equity &amp; inclusion SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'12:00 PM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487255'},
 {d:'2026-09-18',t:'Organizational development SIG',o:'Central Ohio ATD',r:'Midwest',loc:'Virtual',f:'virtual',fee:'members',tm:'7:30 AM ET',rep:'Monthly',u:'https://centralohioatd.org/event-6487266'},
 {d:'2026-09-24',t:'Show &amp; Share: We! Connect future-focused deck, with Chad Littlefield',o:'Trainers Warehouse',r:'Northeast',loc:'Zoom',f:'virtual',fee:'free',tm:'12:00 PM ET',u:'https://trainerswarehouse.com/pages/show-and-share',tw:1},
@@ -122,7 +124,14 @@ var EV=[
 {d:'2026-09-18',t:'Deliver and track learning experiences, no LMS required',o:'ATD Nebraska with ATD Las Vegas',r:'Midwest',loc:'Virtual &mdash; register via ATD Las Vegas',f:'virtual',fee:'unknown',tm:'9:00 AM CT',u:'https://atdnebraska.org/upcoming_events'},
 {d:'2026-10-02',t:"Trainer's Institute Anchor: learning technologies",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'},
 {d:'2026-10-16',t:"Trainer's Institute Scale: facilitation, with Theresa Hummel-Krallinger",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'},
-{d:'2026-10-27',t:"Trainer's Institute Summit: evaluating impact",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'}
+{d:'2026-10-27',t:"Trainer's Institute Summit: evaluating impact",o:'ATD Nebraska',r:'Midwest',loc:'Core Bank, Omaha, NE',f:'inperson',fee:'paid',tm:'9:00 AM CT',rep:'4-part series',u:'https://atdnebraska.org/upcoming_events'},
+{d:'2026-08-14',t:'Change Leadership CoP: resistance is data &mdash; what change leaders do next',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Modernwell, Minneapolis, MN',f:'inperson',fee:'members',tm:'9:00 AM CT',rep:'Monthly',u:'https://atd-gtc.wildapricot.org/event-6540972'},
+{d:'2026-09-03',t:'Fall networking &amp; book fair &mdash; meet Megan Torrance',o:'Ann Arbor ATD',r:'Midwest',loc:'Washtenaw Community College, Ann Arbor, MI',f:'inperson',fee:'paid',tm:'5:30 PM ET',u:'https://a2atd.org/event-6754050'},
+{d:'2026-09-08',t:'From expert to enabler: leading in a rapidly changing world, with Russ Nelson',o:'Ann Arbor ATD',r:'Midwest',loc:'Zoom',f:'virtual',fee:'paid',tm:'6:00 PM ET',u:'https://a2atd.org/event-6754055'},
+{d:'2026-09-15',t:'Coffee chat',o:'Ann Arbor ATD',r:'Midwest',loc:'RoosRoast Coffee, Ann Arbor, MI',f:'inperson',fee:'members',tm:'9:00 AM ET',rep:'Monthly',u:'https://a2atd.org/event-6776139'},
+{d:'2026-09-16',t:'Lead and Learn',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Minneapolis, MN &mdash; venue TBD',f:'inperson',fee:'members',tm:'4:30 PM CT',rep:'Recurring',u:'https://atd-gtc.wildapricot.org/event-6536414'},
+{d:'2026-09-23',t:'Leadership Development CoP: peer discussion',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Modernwell, Minneapolis, MN',f:'inperson',fee:'members',tm:'9:00 AM CT',rep:'Monthly',u:'https://atd-gtc.wildapricot.org/event-6546533'},
+{d:'2026-11-05',t:'CoP: small yet mighty L&amp;D teams',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Modernwell, Minneapolis, MN',f:'inperson',fee:'members',tm:'9:00 AM CT',rep:'Monthly',u:'https://atd-gtc.wildapricot.org/event-6517668'}
 ];
 
 var FEE={free:['Free to all','t-free'],members:['Free for members','t-mem'],paid:['Paid','t-paid'],unknown:['Check event page','t-unk']};
@@ -139,7 +148,7 @@ function mkChip(label,val,cur,fn){
 
 function renderConf(){
   var c=document.getElementById('conf');c.innerHTML='';
-  var list=up(CONF);
+  var list=up(CONF).sort(function(a,b){return new Date(a.d)-new Date(b.d);});
   if(!list.length){c.innerHTML='<div class="empty">No conferences currently scheduled.</div>';return;}
   list.forEach(function(e){
     var a=document.createElement('a');
@@ -165,21 +174,22 @@ function render(){
       g.appendChild(mkChip(x[0],x[1],reg,function(){reg=x[1];render();}));});
   }
 
-  var out=up(EV).filter(function(e){
+  var ALL=EV.concat(CONF);
+  var out=up(ALL).filter(function(e){
     return (fee==='all'||e.fee===fee)&&(fmt==='all'||e.f===fmt)&&(reg==='all'||e.r===reg);
   }).sort(function(a,b){return new Date(a.d)-new Date(b.d);});
 
-  document.getElementById('count').innerHTML=out.length+(out.length===1?' session':' sessions')+' <span>&middot; across 11 chapters</span>';
+  document.getElementById('count').innerHTML=out.length+(out.length===1?' session':' sessions')+' <span>&middot; across 13 chapters</span>';
 
   var L=document.getElementById('list');L.innerHTML='';
   if(!out.length){L.innerHTML='<div class="empty">No sessions match those filters.</div>';return;}
   out.forEach(function(e){
     var dt=new Date(e.d+'T12:00:00');
     var a=document.createElement('a');
-    a.className='ev'+(e.tw?' tw':'');
+    a.className='ev'+(e.tw?' tw':'')+(e.p?' isconf':'');
     a.href=e.u;a.target='_blank';a.rel='noopener noreferrer';
     a.innerHTML='<div class="dt"><div class="dt-m">'+dt.toLocaleDateString('en-US',{month:'short'})+'</div><div class="dt-d">'+dt.getDate()+'</div></div>'+
-      '<div class="ev-b"><div class="ev-t">'+e.t+(e.rep?'<span class="rep">'+e.rep+'</span>':'')+'</div>'+
+      '<div class="ev-b"><div class="ev-t">'+e.t+(e.rep?'<span class="rep">'+e.rep+'</span>':'')+(e.p?'<span class="rep">Conference</span>':'')+'</div>'+
       '<div class="ev-m"><span class="org" style="color:'+(e.tw?'#E8600A':REGC[e.r])+'">'+e.o+'</span> &middot; '+e.tm+' &middot; '+e.loc+'</div>'+
       '<div class="tags"><span class="tag '+FEE[e.fee][1]+'">'+FEE[e.fee][0]+'</span>'+
       '<span class="tag t-fmt">'+(e.f==='virtual'?'Virtual':'In person')+'</span></div></div>';
