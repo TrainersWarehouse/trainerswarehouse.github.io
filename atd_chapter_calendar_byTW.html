@@ -131,7 +131,17 @@ var EV=[
 {d:'2026-09-15',t:'Coffee chat',o:'Ann Arbor ATD',r:'Midwest',loc:'RoosRoast Coffee, Ann Arbor, MI',f:'inperson',fee:'members',tm:'9:00 AM ET',rep:'Monthly',u:'https://a2atd.org/event-6776139'},
 {d:'2026-09-16',t:'Lead and Learn',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Minneapolis, MN &mdash; venue TBD',f:'inperson',fee:'members',tm:'4:30 PM CT',rep:'Recurring',u:'https://atd-gtc.wildapricot.org/event-6536414'},
 {d:'2026-09-23',t:'Leadership Development CoP: peer discussion',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Modernwell, Minneapolis, MN',f:'inperson',fee:'members',tm:'9:00 AM CT',rep:'Monthly',u:'https://atd-gtc.wildapricot.org/event-6546533'},
-{d:'2026-11-05',t:'CoP: small yet mighty L&amp;D teams',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Modernwell, Minneapolis, MN',f:'inperson',fee:'members',tm:'9:00 AM CT',rep:'Monthly',u:'https://atd-gtc.wildapricot.org/event-6517668'}
+{d:'2026-11-05',t:'CoP: small yet mighty L&amp;D teams',o:'ATD Greater Twin Cities',r:'Midwest',loc:'Modernwell, Minneapolis, MN',f:'inperson',fee:'members',tm:'9:00 AM CT',rep:'Monthly',u:'https://atd-gtc.wildapricot.org/event-6517668'},
+{d:'2026-08-18',t:'Chicago eLearning &amp; Technology Showcase',o:'ATD Chicagoland',r:'Midwest',loc:'Northern Illinois University, Naperville Conference Center, Naperville, IL',f:'inperson',fee:'unknown',tm:'8:00 AM CT',u:'https://atdchi.org/events'},
+{d:'2026-08-21',t:'Coffee &amp; Connections',o:'ATD Chicagoland',r:'Midwest',loc:'Virtual &mdash; Zoom',f:'virtual',fee:'unknown',tm:'8:30 AM CT',rep:'Monthly',u:'https://atdchi.org/events'},
+{d:'2026-09-01',t:'ATDChi Summer Social, with Dr. Nicole Eull',o:'ATD Chicagoland',r:'Midwest',loc:'Catalyst Ranch, Chicago, IL',f:'inperson',fee:'unknown',tm:'4:30 PM CT',u:'https://atdchi.org/events'},
+{d:'2026-09-24',t:'How to Network with Purpose and Confidence',o:'ATD Chicagoland',r:'Midwest',loc:'Virtual &mdash; Zoom',f:'virtual',fee:'unknown',tm:'12:00 PM CT',u:'https://atdchi.org/events'},
+{d:'2026-09-30',t:'How to Build a Mentor Program',o:'ATD Chicagoland',r:'Midwest',loc:'Virtual &mdash; Zoom',f:'virtual',fee:'unknown',tm:'12:00 PM CT',u:'https://atdchi.org/events'},
+{d:'2026-10-28',t:'Talent Truths: Ask Me Anything, with Katrina Kennedy',o:'ATD Chicagoland',r:'Midwest',loc:'Virtual',f:'virtual',fee:'unknown',tm:'12:00 PM CT',u:'https://atdchi.org/events'},
+{d:'2026-11-10',t:'How to Build Resilience for Change',o:'ATD Chicagoland',r:'Midwest',loc:'Virtual &mdash; Zoom',f:'virtual',fee:'unknown',tm:'12:00 PM CT',u:'https://atdchi.org/events'},
+{d:'2026-09-17',t:'From Trainer to L&amp;D Leader: coaching, feedback &amp; influence skills, with Candice Gouge',o:'ATD Greater Cleveland',r:'Midwest',loc:'Virtual Zoom Meeting',f:'virtual',fee:'paid',tm:'5:30 PM ET',u:'https://astdcleveland.wildapricot.org/page-1000513'},
+{d:'2026-09-25',t:'Mastermind Group for Independent Training Professionals: pricing, with Susan Aldrich',o:'ATD Greater Cleveland',r:'Midwest',loc:'Virtual Google Meet',f:'virtual',fee:'members',tm:'1:00 PM ET',u:'https://astdcleveland.wildapricot.org/page-1000513'},
+{d:'2026-12-03',t:'ATD Greater Cleveland Holiday Meet &amp; Greet',o:'ATD Greater Cleveland',r:'Midwest',loc:'The Hooley Pub &amp; Kitchen, Brooklyn, OH',f:'inperson',fee:'free',tm:'5:00 PM ET',u:'https://astdcleveland.wildapricot.org/page-1000513'}
 ];
 
 var FEE={free:['Free to all','t-free'],members:['Free for members','t-mem'],paid:['Paid','t-paid'],unknown:['Check event page','t-unk']};
@@ -179,7 +189,7 @@ function render(){
     return (fee==='all'||e.fee===fee)&&(fmt==='all'||e.f===fmt)&&(reg==='all'||e.r===reg);
   }).sort(function(a,b){return new Date(a.d)-new Date(b.d);});
 
-  document.getElementById('count').innerHTML=out.length+(out.length===1?' session':' sessions')+' <span>&middot; across 13 chapters</span>';
+  document.getElementById('count').innerHTML=out.length+(out.length===1?' session':' sessions')+' <span>&middot; across 15 chapters</span>';
 
   var L=document.getElementById('list');L.innerHTML='';
   if(!out.length){L.innerHTML='<div class="empty">No sessions match those filters.</div>';return;}
