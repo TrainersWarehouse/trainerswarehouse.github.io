@@ -22,6 +22,7 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 .chip.on-tmn{background:#F2D0D8;color:#7B1535;border-color:#C0304F}
 .chip.on-hrdq{background:#C8DFF7;color:#0C3A6B;border-color:#2A7DC4}
 .chip.on-ti{background:#C8EAD0;color:#1A5C2E;border-color:#2E8B4A}
+.chip.on-lng{background:#E4D9F2;color:#4B2A7A;border-color:#7B4FA0}
 .chip.on-ss{background:#FFE0C2;color:#7A3000;border-color:#E8600A}
 
 .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
@@ -44,6 +45,7 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
 .s-tmn{background:#F2D0D8;color:#7B1535}
 .s-hrdq{background:#C8DFF7;color:#0C3A6B}
 .s-ti{background:#C8EAD0;color:#1A5C2E}
+.s-lng{background:#E4D9F2;color:#4B2A7A}
 .s-ss{background:#FFE0C2;color:#7A3000}
 
 .list-view{margin-top:0.25rem}
@@ -78,6 +80,7 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
     <div class="leg"><div class="leg-dot" style="background:#C0304F"></div>Training Mag Network</div>
     <div class="leg"><div class="leg-dot" style="background:#2A7DC4"></div>HRDQ</div>
     <div class="leg"><div class="leg-dot" style="background:#2E8B4A"></div>Training Industry</div>
+    <div class="leg"><div class="leg-dot" style="background:#7B4FA0"></div>Langevin Learning</div>
   </div>
 
   <div class="filter-row">
@@ -86,6 +89,7 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#fff;color:#1B2D4F
     <button class="chip on-tmn" id="f-tmn" onclick="toggleF('tmn')">Training Mag Network</button>
     <button class="chip on-hrdq" id="f-hrdq" onclick="toggleF('hrdq')">HRDQ</button>
     <button class="chip on-ti" id="f-ti" onclick="toggleF('ti')">Training Industry</button>
+    <button class="chip on-lng" id="f-lng" onclick="toggleF('lng')">Langevin Learning</button>
   </div>
 
   <div class="controls">
@@ -125,6 +129,7 @@ const SRC={
   tmn:{name:'Training Mag Network',url:'https://trainingmagnetwork.com/calendar',dot:'#C0304F',cls:'s-tmn'},
   hrdq:{name:'HRDQ',url:'https://hrdqu.com/events-all-topics/',dot:'#2A7DC4',cls:'s-hrdq'},
   ti:{name:'Training Industry',url:'https://trainingindustry.com/webinar/',dot:'#2E8B4A',cls:'s-ti'},
+  lng:{name:'Langevin Learning',url:'https://langevin.com/all-webinars/',dot:'#7B4FA0',cls:'s-lng'},
   ss:{name:'Show & Share',url:'https://trainerswarehouse.com/pages/show-and-share',dot:'#E8600A',cls:'s-ss'}
 };
 
@@ -189,6 +194,21 @@ const events=[
   {title:'[Learning Tech Showcase] AI in Training',date:'2026-11-16',time:'11:00 AM ET',source:'ti',url:'https://trainingindustry.com/webinar/artificial-intelligence/learning-tech-showcase-ai-in-training-6/',desc:'A Learning Tech Showcase on AI in training.'},
   {title:'[Leader Talk] The 2027 Learning Experience',date:'2026-12-03',time:'11:00 AM ET',source:'ti',url:'https://trainingindustry.com/webinar/strategy-alignment-and-planning/leader-talk-the-2027-learning-experience/',desc:'A Leader Talk on the 2027 learning experience.'},
   {title:'[Research Spotlight] Better Leaders by Design: Updating L&D\'s Approach to Leadership Development',date:'2026-12-10',time:'1:00 PM ET',source:'ti',url:'https://trainingindustry.com/webinar/leadership/research-spotlight-better-leaders-by-design-updating-lds-approach-to-leadership-development/',desc:'A Research Spotlight on updating L&D\'s approach to leadership development.'},
+  // Langevin Learning Services — updated 6 Oct 2026 (monthly live webinars, free; dated sessions only)
+  {title:'Orchestrating Mastery in Project Management',date:'2026-10-07',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Create a project charter, build a project team and chart a project schedule. This session is full; the next is May 5, 2027.'},
+  {title:'Up Your Training Department\'s Game to Become a Strategic Business Partner',date:'2026-11-04',time:'',source:'lng',url:'https://langevin.com/webinars/up-your-training-departments-game-to-become-a-strategic-business-partner-110426/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Align your department with organizational goals and fine-tune your skills as a training manager.'},
+  {title:'Evidence-Based Management and Leadership: An Introduction',date:'2026-11-18',time:'',source:'lng',url:'https://langevin.com/webinars/evidence-based-management-and-leadership-an-introduction-111826/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Evidence-based processes and techniques to improve team performance, coach staff and build development plans.'},
+  {title:'Renovate Your Instructional Design Process: A Blueprint for Success',date:'2026-12-02',time:'',source:'lng',url:'https://langevin.com/webinars/renovate-your-instructional-design-process-a-blueprint-for-success-120226/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. A blueprint for improving your instructional design process: planning, learner analysis, tests and activities.'},
+  {title:'The Building Blocks of Instructional Techniques: A Foundation for Successful Training',date:'2027-01-06',time:'',source:'lng',url:'https://langevin.com/webinars/the-building-blocks-of-instructional-techniques-a-foundation-for-successful-training-010627/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Strategies for delivering performance-based, learner-centered training, plus managing your own nervousness.'},
+  {title:'Mission POSSIBLE: Cracking the Code for Seamless Hybrid Training',date:'2027-02-03',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Design and deliver hybrid sessions that engage in-person and remote learners equally.'},
+  {title:'Renovate Your Instructional Design Process: A Blueprint for Success',date:'2027-03-03',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. A blueprint for improving your instructional design process: planning, learner analysis, tests and activities.'},
+  {title:'Harmony in Learning: Strategies for Handling Challenging People and Situations',date:'2027-04-07',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Strategies to identify, assess and address challenging behaviors and situations in training sessions.'},
+  {title:'Orchestrating Mastery in Project Management',date:'2027-05-05',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Create a project charter, build a project team and chart a project schedule.'},
+  {title:'Level Up! Designing Interactive e-Learning',date:'2027-07-07',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Design interactive e-learning with a variety of techniques, media and game-based mechanics.'},
+  {title:'Up Your Training Department\'s Game to Become a Strategic Business Partner',date:'2027-08-04',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Align your department with organizational goals and fine-tune your skills as a training manager.'},
+  {title:'AI: Your Creative Partner in Instructional Design',date:'2027-09-01',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Use generative AI to streamline instructional design, build critical thinking skills and design interactive presentation methods.'},
+  {title:'Boost Engagement: Take Your Virtual Classroom Training to New Heights',date:'2027-10-06',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Use your virtual platform\'s tools to boost physical and cognitive engagement and collaboration.'},
+  {title:'Training Needs Analysis: To Train or Not to Train, That Is the Question',date:'2027-11-03',time:'',source:'lng',url:'https://langevin.com/all-webinars/',desc:'Free to attend live. Live online via Adobe Connect, about 60 minutes; attendees receive a recording. Simplify the needs analysis process and offer training only when it is required.'},
   // Show & Share — always sorted first
   {title:'Uncovering the Iceberg: Tools to Surface Assumptions',date:'2026-10-08',time:'12:00 PM ET',source:'ss',url:'https://us06web.zoom.us/meeting/register/tZcuc--gqzooGtYEL0h1EdbtQb-LoUulvfjq',desc:'Discover tools and tips to uncover and talk about the assumptions, beliefs, and unwritten rules that guide our thinking.'},
   {title:'Give & Get: Co-facilitation and More with Susan Landay',date:'2026-10-22',time:'12:00 PM ET',source:'ss',url:'https://us06web.zoom.us/meeting/register/tZcuc--gqzooGtYEL0h1EdbtQb-LoUulvfjq',desc:'Come share a tip and ask a question, explore the challenges of co-facilitation, and more!'},
@@ -198,7 +218,7 @@ const events=[
 
 let view='cal';
 let curMonth=new Date();curMonth.setDate(1);
-let filters={tmn:true,hrdq:true,ti:true,ss:true};
+let filters={tmn:true,hrdq:true,ti:true,lng:true,ss:true};
 
 function toggleF(s){
   filters[s]=!filters[s];
